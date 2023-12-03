@@ -1,0 +1,58 @@
+"""
+Part 2
+
+"""
+array=[]
+with open(r"[file]", 'r') as file:
+    array=file.readlines()
+    array = "".join(array)
+    array = array.replace("zero", "zer0o")
+    array = array.replace("one", "on1e")
+    array = array.replace("two", "tw2o")
+    array = array.replace("three", "thr3ee")
+    array = array.replace("four", "fou4r")
+    array = array.replace("five", "fiv5e")
+    array = array.replace("six", "si6x")
+    array = array.replace("seven", "sev7en")
+    array = array.replace("eight", "eig8ht")
+    array = array.replace("nine", "ni9ne")
+with open ("[file]", 'w') as file2:
+    file2.write(array)
+
+
+arraystr=[]
+with open(r"[file]", 'r') as file3:
+    arraystr=file3.readlines()
+
+
+#print(arraystr)
+arraynum1=[]
+arraynum2=[]
+for k in arraystr: #going through lines
+    temparray=[]
+    temparray1=[]
+    temparray2=[]
+    for i in k: #going through chars in line
+        if i=='0' or i=='1' or i=='2' or i=='3' or i=='4' or i=='5' or i=='6' or i=='7' or i=='8' or i=='9':
+            temparray.append(i)
+    arraynum1.append(temparray[0]) #first
+    arraynum2.append(temparray[-1]) #last
+
+#print(arraynum1)
+#print(arraynum2)
+length = len(arraynum1)
+arraytot=[]
+for i in range(length): #going through array
+    j=arraynum1[i]+arraynum2[i]
+    arraytot.append(j)
+#print(arraytot)
+
+arrayint=[]
+for i in arraytot:
+    i=int(i)
+    arrayint.append(i)
+#print(arrayint)
+sum=0
+for i in arrayint:
+    sum=sum+i
+print('the sum is', sum)
