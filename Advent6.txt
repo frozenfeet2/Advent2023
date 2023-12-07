@@ -1,0 +1,39 @@
+time1=46807866
+distance1=214117714021024
+#time2=80
+#distance2=1177
+#time3=78
+#distance3=1402
+#time4=66
+#distance4=1024
+wins1=0
+wins2=0
+wins3=0
+wins4=0
+for x in range(0,time1 + 1):
+    hold = x #s
+    go = ((time1 - x)*x)
+    if go>distance1:
+        wins1 = wins1 + 1
+"""
+for x in range(0,time2 + 1):
+    hold = x #s
+    speed = x #m/s
+    go = ((time2 - x)*x)
+    if go>distance2:
+        wins2 = wins2 + 1
+for x in range(0,time3 + 1):
+    hold = x #s
+    speed = x #m/s
+    go = ((time3 - x)*x)
+    if go>distance3:
+        wins3 = wins3 + 1
+for x in range(0,time4 + 1):
+    hold = x #s
+    speed = x #m/s
+    go = ((time4 - x)*x)
+    if go>distance4:
+        wins4 = wins4 + 1
+winstot=wins1*wins2*wins3*wins4
+"""
+print('total of ways:', wins1)
