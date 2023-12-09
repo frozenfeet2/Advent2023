@@ -1,0 +1,28 @@
+with open('[location]', 'r') as f:
+    seqlist=[line.strip('Game').split() for line in f] 
+seqlist2=[]
+intlist=[]
+final=[]
+for row in seqlist:
+    row2=[item.replace(":","").replace(';','').replace(',','') for item in row]
+    seqlist2.append(row2)
+for line in seqlist2:
+    tlist=[]
+    for char in line:
+        if char.isdigit() ==True:
+            char=int(char)
+        tlist.append(char)    
+    intlist.append(tlist)
+#red=12, green=13, blue=14
+for row in intlist:
+    for x in range(0,len(row)-1):
+        if (row[x+1] == 'red' and row[x]>12) or (row[x+1] == 'green' and row[x]>13) or (row[x+1] == 'blue' and row [x]>14): 
+            row.append('IGNORE')
+
+for row in intlist:
+    if row[-1] != 'IGNORE':
+        final.append(row[0])
+sum=0
+for x in range(0,len(final)):
+    sum=sum+final[x]
+print('sum:', sum)  
