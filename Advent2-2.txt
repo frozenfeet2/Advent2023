@@ -1,0 +1,50 @@
+# part2
+with open('[location]', 'r') as f:
+    seqlist=[line.strip('Game').split() for line in f] 
+seqlist2=[]
+intlist=[]
+final=[]
+for row in seqlist:
+    row2=[item.replace(":","").replace(';','').replace(',','') for item in row]
+    seqlist2.append(row2)
+for line in seqlist2:
+    tlist=[]
+    for char in line:
+        if char.isdigit() ==True:
+            char=int(char)
+        tlist.append(char)    
+    intlist.append(tlist)
+
+
+redmax=[]
+greenmax=[]
+bluemax=[]
+for row in intlist:
+    tred=[]
+    tblue=[]
+    tgreen=[]
+    for x in range(0,len(row)-1):
+        if row[x+1] == 'red':
+            a=row[x]
+            tred.append(a)
+        elif row[x+1] == 'blue':
+            a=row[x]
+            tblue.append(a)
+        elif row[x+1] == 'green':
+            a=row[x]
+            tgreen.append(a) 
+    a=max(tred)
+    redmax.append(a)
+    b=max(tgreen)
+    greenmax.append(b)
+    c=max(tblue)
+    bluemax.append(c)
+
+values=[]
+for x in range(0,len(redmax)):
+    a=redmax[x]*bluemax[x]*greenmax[x]
+    values.append(a)
+sum=0
+for x in range(0,len(values)):
+    sum=sum+values[x]
+print('sum:', sum) 
