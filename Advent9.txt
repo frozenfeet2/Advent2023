@@ -1,4 +1,4 @@
-with open('/Users/michaeljames/Documents/_python/Adventofcode/9-input.txt', 'r') as f:
+with open([location], 'r') as f:
     seqlist=[line.strip('\n').split() for line in f] 
 intlist=[]
 predictednums=[]
