@@ -1,0 +1,121 @@
+with open('/Users/michaeljames/Documents/_python/Adventofcode/9-input.txt', 'r') as f:
+    seqlist=[line.strip('\n').split() for line in f] 
+intlist=[]
+predictednums=[]
+for line in seqlist:
+    tlist=[int(char) for char in line]
+    intlist.append(tlist)
+# print('intlist:', intlist) 
+  
+for row in intlist:
+    o2=[]
+    o3=[]
+    o4=[]
+    o5=[]
+    o6=[]
+    o7=[]
+    o8=[]
+    o9=[]
+    o10=[]
+    o11=[]
+    o12=[]
+    o13=[]
+    o14=[]
+    o15=[]
+    o16=[]
+    o17=[]
+    o18=[]
+    o19=[]
+    o20=[]
+    o21=[]
+
+    for i in range(1,21):
+        x = row[i] - row[i-1]
+        o2.append(x)
+    for i in range(1,20):
+        x = o2[i] - o2[i-1]
+        o3.append(x)
+    for i in range(1,19):
+        x = o3[i] - o3[i-1]
+        o4.append(x)
+    for i in range(1,18):
+        x = o4[i] - o4[i-1]
+        o5.append(x)
+    for i in range(1,17):
+        x = o5[i] - o5[i-1]
+        o6.append(x)
+    for i in range(1,16):
+        x = o6[i] - o6[i-1]
+        o7.append(x)
+    for i in range(1,15):
+        x = o7[i] - o7[i-1]
+        o8.append(x)
+    for i in range(1,14):
+        x = o8[i] - o8[i-1]
+        o9.append(x)
+    for i in range(1,13):
+        x = o9[i] - o9[i-1]
+        o10.append(x)
+    for i in range(1,12):
+        x = o10[i] - o10[i-1]
+        o11.append(x)
+    for i in range(1,11):
+        x = o11[i] - o11[i-1]
+        o12.append(x)
+    for i in range(1,10):
+        x = o12[i] - o12[i-1]
+        o13.append(x)
+    for i in range(1,9):
+        x = o13[i] - o13[i-1]
+        o14.append(x)
+    for i in range(1,8):
+        x = o14[i] - o14[i-1]
+        o15.append(x)
+    for i in range(1,7):
+        x = o15[i] - o15[i-1]
+        o16.append(x)
+    for i in range(1,6):
+        x = o16[i] - o16[i-1]
+        o17.append(x)
+    for i in range(1,5):
+        x = o17[i] - o17[i-1]
+        o18.append(x)
+    for i in range(1,4):
+        x = o18[i] - o18[i-1]
+        o19.append(x)
+    for i in range(1,3):
+        x = o19[i] - o19[i-1]
+        o20.append(x)
+    for i in range(1,2):
+        x = o20[i] - o20[i-1]
+        o21.append(x)
+    o20.append(o20[-1]+o21[-1])
+    o19.append(o19[-1]+o20[-1])
+    o18.append(o18[-1]+o19[-1])
+    o17.append(o17[-1]+o18[-1])
+    o16.append(o16[-1]+o17[-1])
+    o15.append(o15[-1]+o16[-1])
+    o14.append(o14[-1]+o15[-1])
+    o13.append(o13[-1]+o14[-1])
+    o12.append(o12[-1]+o13[-1])
+    o11.append(o11[-1]+o12[-1])
+    o10.append(o10[-1]+o11[-1])
+    o9.append(o9[-1]+o10[-1])
+    o8.append(o8[-1]+o9[-1])
+    o7.append(o7[-1]+o8[-1])
+    o6.append(o6[-1]+o7[-1])
+    o5.append(o5[-1]+o6[-1])
+    o4.append(o4[-1]+o5[-1])
+    o3.append(o3[-1]+o4[-1])
+    o2.append(o2[-1]+o3[-1])
+    row.append(row[-1]+o2[-1])
+    predictednums.append(row[-1])
+# print('nums:', predictednums)
+tally=0
+for x in range(0,len(predictednums)):
+    tally=tally+predictednums[x]
+
+    
+print('total:', tally)
+
+# NB for part2, use o20.append(o20[0]-o21[-1]) etc
