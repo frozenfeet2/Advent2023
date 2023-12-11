@@ -1,0 +1,79 @@
+with open('[location]', 'r') as f:
+    list=[line.strip('\n') for line in f] 
+plot=[]
+count=[]
+for row in list:
+    tlist=[]
+    for char in row:
+        tlist.append(char)
+    plot.append(tlist)
+
+def down():
+    count.append('1')
+    pos[0]=pos[0]+1
+    i=plot[pos[0]][pos[1]]
+    print('pos', pos, 'ID',i)
+    if i=='S':
+        print('stop')
+    elif i=='J':
+        left()
+    elif i=='|':
+        down()
+    elif i=='L':
+        right()
+    else:
+        print('down: no')
+
+def left():
+    count.append('1')
+    pos[1]=pos[1]-1
+    i=plot[pos[0]][pos[1]]
+    print('pos', pos, 'ID',i)
+    if i=='S':
+        print('stop')
+    elif i=='L':
+        up()
+    elif i=='-':
+        left()
+    elif i=='F':
+        down()
+    else:
+        print('left: no')
+
+def right():
+    count.append('1')
+    pos[1]=pos[1]+1
+    i=plot[pos[0]][pos[1]]
+    print('pos', pos, 'ID',i)
+    if i=='S':
+        print('stop')
+    elif i=='-':
+        right()
+    elif i=='J':
+        up()
+    elif i=='7':
+        down()
+    else:
+        print('right: no')
+
+def up():
+    count.append('1')
+    pos[0]=pos[0]-1
+    i=plot[pos[0]][pos[1]]
+    print('pos', pos, 'ID',i)
+    if i=='S':
+        print('stop')
+    elif i=='7':
+        left()
+    elif i=='|':
+        up()
+    elif i=='F':
+        right()
+    else:
+        print('up: no')
+
+pos=[90,62]  # due to recursion repeat for: 90,62, 72,26 30,62 58,78 111,93
+i=plot[pos[0]][pos[1]]
+print('pos', pos, 'ID',i)
+up()
+print(len(count)/2)
