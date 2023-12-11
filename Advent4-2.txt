@@ -1,0 +1,27 @@
+with open('[location]') as f:
+    list=[line.strip('\n').strip('Card').split() for line in f]
+# list is 0, winning is 1-10, chosen is 7-14
+numwin=[]
+for row in range(0, len(list)):
+    tpoints=[]
+    for char in range(12,37):
+        if list[row][char] in {list[row][1], list[row][2], list[row][3], list[row][4], list[row][5], list[row][6], list[row][7], list[row][8], list[row][9], list[row][10]}:  
+            tpoints.append('1')
+    numwin.append(len(tpoints))
+wins=[1]*(len(list))
+copies=[1]*len(list)
+for x in range(0,10):
+    wins.append(0)
+    copies.append(0)
+for x in range(0,len(numwin)):
+    while copies[x]>0:
+        i=numwin[x]
+        while i>0:
+            wins[x+i]=wins[x+i]+1
+            copies[x+i]=copies[x+i]+1
+            i-=1
+        copies[x]=copies[x]-1
+total=0
+for x in range(0,len(wins)-10):
+    total=total+wins[x]
+print('cards', total)

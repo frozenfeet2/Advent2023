@@ -1,0 +1,59 @@
+with open('[location]', 'r') as f:
+    list=[line.strip('\n') for line in f] 
+plot=[]
+for row in list:
+    tlist=[]
+    for char in row:
+        tlist.append(char)
+    plot.append(tlist)
+symbol = {'*', '-', '&', '@', '/', '#', '%', '+', '$', '='}
+number = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+
+plot2 = []
+for row in plot:
+    row2 = ['.'] + row + ['.']
+    plot2.append(row2)
+    #row.append('.')
+plot2= [['.']*(len(plot2)+2)] + plot2 + [['.']*(len(plot2)+2)]
+listofnums=[]
+
+def action():
+    if plot2[row][char+1] in number: # 2 digit
+        plot2[row][char]=plot2[row][char]+plot2[row][char+1]
+        plot2[row][char+1]='.'
+        if plot2[row][char+2] in number: # 3 digit
+            plot2[row][char]=plot2[row][char]+plot2[row][char+2]
+            plot2[row][char+2]='.'
+            if plot2[row+1][char-1] in symbol or plot2[row+1][char] in symbol or \
+                plot2[row+1][char+1] in symbol or plot2[row+1][char+2] in symbol or \
+                plot2[row+1][char+3] in symbol or plot2[row][char+3] in symbol or \
+                plot2[row-1][char+3] in symbol or plot2[row-1][char+2] in symbol or \
+                plot2[row-1][char+1] in symbol or plot2[row-1][char] in symbol or \
+                plot2[row-1][char-1] in symbol or plot2[row][char-1] in symbol:
+                listofnums.append(plot2[row][char])
+                print('yes, 3')
+        else: #check symbols 2 digit
+            if plot2[row+1][char-1] in symbol or plot2[row+1][char] in symbol or \
+                plot2[row+1][char+1] in symbol or plot2[row+1][char+2] in symbol or plot2[row][char+2] in symbol or \
+                plot2[row-1][char+2] in symbol or plot2[row-1][char+1] in symbol or plot2[row-1][char] in symbol or \
+                plot2[row-1][char-1] in symbol or plot2[row][char-1] in symbol:
+                listofnums.append(plot2[row][char])    
+                print('yes, 2')
+        if plot2[row+1][char] in symbol or plot2[row+1][char+1] in symbol or \
+            plot2[row][char+1] in symbol or plot2[row-1][char+1] in symbol or \
+            plot2[row-1][char] in symbol or plot2[row-1][char-1] in symbol or \
+            plot2[row][char-1] in symbol or plot2[row+1][char-1] in symbol:
+            listofnums.append(plot2[row][char])
+
+for row in range(1,len(plot2)-1):
+    for char in range(1,len(plot2)-1):
+        if plot2[row][char] in number:
+            action()
+listofnums2=[]
+for x in range(0,len(listofnums)):
+    a=int(listofnums[x])
+    listofnums2.append(a)
+sum=0
+for x in range(0,len(listofnums2)):
+    sum=sum+listofnums2[x]
+print('sum:',sum)
