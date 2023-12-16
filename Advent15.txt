@@ -1,0 +1,31 @@
+def main():
+    import numpy as np
+    with open('[location]', 'r') as f:
+        strplot=[]
+        for line in f:
+            x=line.split(",")
+            strplot.append(x)
+    ascii=[]
+    for x in range(0,len(strplot[0])):
+        tarr=[]
+        for char in range(0,len(strplot[0][x])):
+            a=ord(strplot[0][x][char])
+            tarr.append(a)
+        ascii.append(tarr)
+    value=[]
+    for x in range(0,len(ascii)):
+        value.append(0)
+        for y in range(0,len(ascii[x])):
+            value[x]+=ascii[x][y]
+            value[x]=value[x]*17
+            value[x]= value[x] % 256
+            #print(value[x])
+    #print('val',value)
+    #print('asc',ascii)
+    sum=0
+    for x in range(0,len(value)):
+        sum+=value[x]
+    print("sum:",sum)
+
+if __name__ == '__main__':
+    main()
